@@ -41,22 +41,31 @@ $(document).ready(function() {
 });
 
 $(document).on('mouseenter', '.dancer', function(event) {
-  console.log(getClosest(event.clientX, event.clientY, dancers));
+  var y = parseInt($(this).closest('.dancer').css('top'), 10);
+  var x = parseInt($(this).closest('.dancer').css('left'), 10);
+
+  var spotlight = getClosest(x, y, window.dancers);
+  var closest = getClosest(x, y, window.dancers, spotlight);
+
+  // swap positions
+  spotlight.setPosition(closest.top, closest.left);
+  closest.setPosition(y, x);
 });
 
-var getClosest = function(x, y, dancers) {
+var getClosest = function(x, y, dancers, excludes) {
   var closestDancers = [];
-  var lastDistance = getDistance(x, y, dancers[0]);
-  closestDancers[0] = dancers[0];
+  var lastDistance = -1;
 
   dancers.forEach(function(dancer) {
-    if (getDistance(x, y, dancer) < lastDistance) {
-      dancers[0] = dancer;
+    var distance = getDistance(x, y, dancer);
+    if ((distance < lastDistance || lastDistance === -1) && dancer !== excludes) {
+      closestDancers[0] = dancer;
+      lastDistance = distance;
     }
   });
-  return dancers[0];
+  return closestDancers[0];
 };
 
 var getDistance = function(x, y, dancer) {
-  return Math.sqrt(Math.pow(x - dancer.top, 2) + Math.pow(y - dancer.left, 2));
+  return Math.sqrt(Math.pow(x - dancer.left, 2) + Math.pow(y - dancer.top, 2));
 };
