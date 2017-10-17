@@ -16,7 +16,6 @@ makeJumpingDancer.prototype.step = function() {
   // toggle() is a jQuery method to show/hide the <span> tag.
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
-console.log(Math.floor(this.top), parseInt(this.$node.css('top')));
   if (Math.floor(this.top) === parseInt(this.$node.css('top'))) {
     this.$node.css({top: '-=10px'});
   } else {
