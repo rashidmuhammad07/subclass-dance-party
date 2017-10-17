@@ -22,3 +22,8 @@ makeJumpingDancer.prototype.step = function() {
     this.$node.css({top: this.top});
   }
 };
+
+makeJumpingDancer.prototype.lineUp = function(place) {
+  this.setPosition(place, 30);
+  this.top = place;
+};
