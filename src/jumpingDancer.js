@@ -1,5 +1,5 @@
 var makeJumpingDancer = function(top, left, timeBetweenSteps) {
-  makeDancer.call(this, top, left, timeBetweenSteps / 4);
+  makeDancer.call(this, top, left, timeBetweenSteps);
   this.top = top;
 };
 
@@ -21,9 +21,4 @@ makeJumpingDancer.prototype.step = function() {
   } else {
     this.$node.css({top: this.top});
   }
-};
-
-makeJumpingDancer.prototype.lineUp = function(place) {
-  this.setPosition(place, 30);
-  this.top = place;
 };

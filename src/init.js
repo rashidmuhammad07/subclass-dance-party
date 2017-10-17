@@ -32,9 +32,10 @@ $(document).ready(function() {
   });
 
   $('.addLineUpButton').on('click', function(event) {
-    var place = ($(document).height() - 32) / window.dancers.length;
+    var place = $(document).width() / window.dancers.length;
+    var padding = $(document).width() - (place * (window.dancers.length - 1));
     window.dancers.forEach(function(item, index) {
-      item.lineUp(32 + place * index);
+      item.lineUp($(document).height() * 0.6, padding / 2 + place * index);
     });
   });
 
