@@ -17,7 +17,7 @@ makeShakingDancer.prototype.step = function() {
   // other effects you can use on a jQuery-wrapped html tag.
 //console.log(Math.floor(this.top), parseInt(this.$node.css('top')));
   if (Math.floor(this.left) === parseInt(this.$node.css('left'))) {
-    this.$node.css({left: '-=10px'});
+    this.$node.css({left: this.left - 10});
   } else {
     this.$node.css({left: this.left});
   }

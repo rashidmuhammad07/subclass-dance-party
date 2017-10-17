@@ -16,7 +16,7 @@ makeJumpingDancer.prototype.step = function() {
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
   if (Math.floor(this.top) === parseInt(this.$node.css('top'))) {
-    this.$node.css({top: '-=10px'});
+    this.$node.css({top: this.top - 10});
   } else {
     this.$node.css({top: this.top});
   }
