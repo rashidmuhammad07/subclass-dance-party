@@ -33,7 +33,6 @@ $(document).ready(function() {
 
   $('.addLineUpButton').on('click', function(event) {
     var place = ($(document).height() - 32) / window.dancers.length;
-  console.log($(document).height(), window.dancers.length, place);
     window.dancers.forEach(function(item, index) {
       item.lineUp(32 + place * index);
     });
