@@ -32,10 +32,10 @@ $(document).ready(function() {
   });
 
   $('.addLineUpButton').on('click', function(event) {
-    var place = $(document).width() / window.dancers.length;
-    var padding = $(document).width() - (place * (window.dancers.length - 1));
+    var place = $(document).width() / (window.dancers.length + 1);
+    var padding = place / 2;
     window.dancers.forEach(function(item, index) {
-      item.lineUp($(document).height() * 0.6, padding / 2 + place * index);
+      item.lineUp($(document).height() * 0.6, padding + place * index);
     });
   });
 
@@ -49,6 +49,8 @@ $(document).on('mouseenter', '.dancer', function(event) {
   var closest = getClosest(x, y, window.dancers, spotlight);
 
   // swap positions
+  y = spotlight.top;
+  x = spotlight.left;
   spotlight.setPosition(closest.top, closest.left);
   closest.setPosition(y, x);
 });

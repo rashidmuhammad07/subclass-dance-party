@@ -1,5 +1,6 @@
 var makeBlinkyDancer = function(top, left, timeBetweenSteps) {
   makeDancer.call(this, top, left, timeBetweenSteps);
+  this.$node.css({content: 'url("ghost' + (Math.floor(Math.random() * 4) + 1) + '.png")', height: '9%', width: '6%'});
 };
 
 makeBlinkyDancer.prototype = Object.create(makeDancer.prototype);

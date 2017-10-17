@@ -1,5 +1,6 @@
 var makeJumpingDancer = function(top, left, timeBetweenSteps) {
   makeDancer.call(this, top, left, timeBetweenSteps);
+  this.$node.css({content: 'url("pikachu.png")', width: '7%'});
 };
 
 makeJumpingDancer.prototype = Object.create(makeDancer.prototype);
@@ -16,8 +17,8 @@ makeJumpingDancer.prototype.step = function() {
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
   if (Math.floor(this.top) === parseInt(this.$node.css('top'))) {
-    this.$node.css({top: this.top - 10});
+    this.$node.css({top: this.top - 40, content: 'url("pikachu2.png")', height: '9%', width: '7%'});
   } else {
-    this.$node.css({top: this.top});
+    this.$node.css({top: this.top, content: 'url("pikachu.png")', height: '8%', width: '7%'});
   }
 };
