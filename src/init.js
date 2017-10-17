@@ -37,5 +37,26 @@ $(document).ready(function() {
       item.lineUp(32 + place * index);
     });
   });
+
 });
 
+$(document).on('mouseenter', '.dancer', function(event) {
+  console.log(getClosest(event.clientX, event.clientY, dancers));
+});
+
+var getClosest = function(x, y, dancers) {
+  var closestDancers = [];
+  var lastDistance = getDistance(x, y, dancers[0]);
+  closestDancers[0] = dancers[0];
+
+  dancers.forEach(function(dancer) {
+    if (getDistance(x, y, dancer) < lastDistance) {
+      dancers[0] = dancer;
+    }
+  });
+  return dancers[0];
+};
+
+var getDistance = function(x, y, dancer) {
+  return Math.sqrt(Math.pow(x - dancer.top, 2) + Math.pow(y - dancer.left, 2));
+};

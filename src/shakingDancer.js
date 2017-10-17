@@ -1,6 +1,5 @@
 var makeShakingDancer = function(top, left, timeBetweenSteps) {
   makeDancer.call(this, top, left, timeBetweenSteps);
-  this.left = left;
 };
 
 makeShakingDancer.prototype = Object.create(makeDancer.prototype);
@@ -22,9 +21,4 @@ makeShakingDancer.prototype.step = function() {
   } else {
     this.$node.css({left: this.left});
   }
-};
-
-makeShakingDancer.prototype.lineUp = function(place) {
-  this.setPosition(place, 30);
-  this.left = 30;
 };
